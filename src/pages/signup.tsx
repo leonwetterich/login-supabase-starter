@@ -17,8 +17,8 @@ export default function SignUp() {
                 <p className="subtitle">Let's get started with your 30 day free trial.</p>
             </div>
             <input className="input" type="text" name="name" placeholder="Name"/>
-            <input className="input" type="text" name="email" placeholder="E-Mail"/>
-            <input className="input" type="text" name="password" placeholder="Password"/>
+            <input className="input" type="email" name="email" placeholder="E-Mail"/>
+            <input className="input" type="password" name="password" placeholder="Password"/>
             <div className="button-group">
                 <button className="button button-primary" type="submit">Create account</button>
                 <button className="button button-secondary" type="submit">Google</button>
