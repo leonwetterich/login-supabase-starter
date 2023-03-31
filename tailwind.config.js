@@ -9,6 +9,10 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    fontFamily: {
+      'display': ['Poppins'],
+      'body': ['Inter'],
+    },
     extend: {},
   },
   plugins: [],

@@ -1,3 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    font-family: 'Poppins';
+}
+
+main {
+    @apply flex items-center h-screen lg:justify-start justify-center;
+}
+
+.input {
+    @apply bg-white py-4 border-b-2 border-b-gray-300 w-full mb-3 text-xl font-light outline-0 hover:border-b-gray-400 transition-colors;
+}
+
+.form-container {
+    @apply max-w-md w-full px-3 py-2 m-6;
+}
+
+.form-header {
+    @apply mb-12;
+}
+
+.headline {
+    @apply text-4xl font-bold mb-3;
+}
+
+.subtitle {
+    @apply text-xl mb-3 font-light;
+}
+
+.button {
+    @apply font-bold w-full rounded-lg py-4 my-2;
+}
+
+.button-primary {
+    @apply bg-black text-white hover:bg-gray-900 transition-colors;
+}
+.button-secondary {
+    @apply bg-gray-100 text-black hover:bg-gray-200 transition-colors;
+}
+
+.button-group {
+    @apply mt-6;
+}
+
+.image-container {
+    @apply w-full h-full p-6 lg:block hidden;
+}
+.image {
+    @apply rounded-tr-3xl rounded-bl-3xl bg-gray-200 h-full w-full object-cover;
+}
