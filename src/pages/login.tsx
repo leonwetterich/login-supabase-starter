@@ -1,27 +1,22 @@
 import Head from 'next/head'
 import { supabase } from 'components/utils/supabase/client'
-import Link from 'next/link'
+import { useRouter } from 'next/router'
+import Link from 'next/link';
 
-export default function SignUp() {
-  const signUp = async (event: any) => {
-    
+export default function Login() {
+  const login = async (event: any) => {
     event.preventDefault();
  
+    // Get data from the form.
     const formData = {
-      name: event.target.name.value,
       email: event.target.email.value,
       password: event.target.password.value
     };
     console.log(formData)
-    const { data, error } = await supabase.auth.signUp(
+    const { data, error } = await supabase.auth.signInWithPassword(
       {
         email: formData.email,
-        password: formData.password,
-        options: {
-          data: {
-            name: formData.name,
-          }
-        }
+        password: formData.password
       }
     )
   }
@@ -36,19 +31,18 @@ export default function SignUp() {
       <main>
         
           <div className="form-container">
-            <form onSubmit={signUp}>
+            <form onSubmit={login}>
                 <div className="form-header">
-                    <h1 className="headline">Create an Account</h1>
-                    <p className="subtitle">Get started playing in a matter of minutes.</p>
+                    <h1 className="headline">Login to your Account</h1>
+                    <p className="subtitle">Continue where you left off. Good Luck!</p>
                 </div>
-                <input className="input" type="text" name="name" placeholder="Name" required/>
                 <input className="input" type="email" name="email" placeholder="E-Mail" required/>
                 <input className="input" type="password" name="password" placeholder="Password" required minLength={10} maxLength={32}/>
                 <div className="button-group">
-                    <button className="button button-primary" type="submit">Create account</button>
+                    <button className="button button-primary" type="submit">Login to account</button>
                 </div>
                 <div className="text-center py-3">
-                  <Link className="py-3" href="/login">You already have an account? Login here!</Link>
+                  <Link className="py-3" href="/signup">You don't have an account yet? Create one here!</Link>
                 </div>
               </form>
           </div>
