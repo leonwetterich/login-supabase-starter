@@ -13,7 +13,10 @@ body {
 }
 
 main {
-    @apply mx-2 md:mx-4;
+    @apply mx-3 md:mx-6;
+}
+nav {
+    @apply m-3 md:m-6;
 }
 
 .form-container {
