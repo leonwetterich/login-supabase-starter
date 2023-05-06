@@ -8,28 +8,28 @@ export default function App({ Component, pageProps }: AppProps) {
   const [user, setUser] = useState<any>() 
   const router = useRouter();
 
-  
-
   useEffect(() => {
     supabase.auth.onAuthStateChange((event, session) => {
-      if (event === 'SIGNED_IN') {
-        router.push('dashboard')
-      } else if (event === 'SIGNED_OUT') {
-        router.push('login')
+      if (event === 'SIGNED_OUT') {
+        router.push('/login')
       }
-      
     })
     const getUser = async () => {
       const {data, error} = await supabase.auth.getSession();
 
       if (error || !data.session) {
-        if (router.pathname) {
-          router.push('login')
+        console.log('no account')
+        if (router.pathname.includes('app') || ['/login', '/signup'].includes(router.pathname)) {
+          console.log('no account - redirect to login')
+          router.push('/login')
+          return
         }
       }
 
       if (['/login', '/signup'].includes(router.pathname)) {
-        router.push('dashboard')
+        console.log('account - redirect to dashboard')
+        router.push('/app/dashboard')
+        return
       }
       console.log(data?.session)
       return data?.session?.user

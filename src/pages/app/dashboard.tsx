@@ -1,11 +1,9 @@
 import Head from 'next/head'
 import { supabase } from 'components/utils/supabase/client'
-import { useRouter } from 'next/router'
-export default function Login() {
-    const router = useRouter();
+import Navigation from 'components/elements/app/Navigation'
+export default function Dashboard() {
   const logout = async () => {
     const { error } = await supabase.auth.signOut()
-    
     console.log(error)
   }
   
@@ -17,9 +15,8 @@ export default function Login() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <button className="button button-primary" onClick={logout}>Logout</button>
-        
+      <Navigation/>
+      <main className="">
       </main>
     </>
   )

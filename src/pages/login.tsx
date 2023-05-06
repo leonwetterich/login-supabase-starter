@@ -4,7 +4,13 @@ import { useRouter } from 'next/router'
 import Link from 'next/link';
 
 export default function Login() {
+  const router = useRouter()
   const login = async (event: any) => {
+    supabase.auth.onAuthStateChange((event, session) => {
+      if (event === 'SIGNED_IN') {
+        router.push('/app/dashboard')
+      }
+    })
     event.preventDefault();
  
     // Get data from the form.
@@ -28,13 +34,14 @@ export default function Login() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        
+      <div className="flex items-center h-screen lg:justify-start justify-center">
           <div className="form-container">
             <form onSubmit={login}>
                 <div className="form-header">
-                    <h1 className="headline">Login to your Account</h1>
-                    <p className="subtitle">Continue where you left off. Good Luck!</p>
+                    <div className="py-3 text-6xl font-semibold text-left">
+                        <Link href="/">kookit!</Link>
+                    </div>
+                    <p className="subtitle">Login to your Account to continue playing!</p>
                 </div>
                 <input className="input" type="email" name="email" placeholder="E-Mail" required/>
                 <input className="input" type="password" name="password" placeholder="Password" required minLength={10} maxLength={32}/>
@@ -50,8 +57,7 @@ export default function Login() {
         <div className="image-container">
             <img className="image" src="/images/signup.jpg" alt="hi"/>
         </div>
-        
-      </main>
+      </div>
     </>
   )
 }

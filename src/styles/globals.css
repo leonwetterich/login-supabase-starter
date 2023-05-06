@@ -8,12 +8,12 @@ body {
     font-family: 'Poppins';
 }
 
-main {
-    @apply flex items-center h-screen lg:justify-start justify-center;
-}
-
 .input {
     @apply bg-white py-4 border-b-2 border-b-gray-300 w-full mb-3 text-xl font-light outline-0 hover:border-b-gray-400 transition-colors;
+}
+
+main {
+    @apply mx-2 md:mx-4;
 }
 
 .form-container {
@@ -41,6 +41,14 @@ main {
 }
 .button-secondary {
     @apply bg-gray-100 text-black hover:bg-gray-200 transition-colors;
+}
+
+.button-danger {
+    @apply bg-red-100 text-red-900 hover:bg-red-200 transition-colors;
+}
+
+.button-sleek {
+    @apply py-2;
 }
 
 .button-group {
